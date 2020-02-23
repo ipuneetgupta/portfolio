@@ -1,0 +1,7 @@
+{% load static %}
+h1.font-weight-bolder{
+  color: blue;
+}
+#23{
+background: yellow;
+}

@@ -52,7 +52,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'portfolio.urls'
-
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
+STATIC_URL = './static/'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
