@@ -1,86 +1,62 @@
+{% extends "jobs/base.html" %}
 {% load static %}
-<!doctype html>
-<html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Jekyll v3.8.6">
-  <title>Album example · Bootstrap</title>
+{% block css %}
+<link rel="stylesheet" type="text/css" href={% static "/css/base.css" %} />
+<script src="{% static '/js/script.js' %}"></script>
+{% endblock %}
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
+{% block content %}
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href={% static "/css/main.css" %}>
-</head>
-
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Puneet gutpa</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-        <div class="navbar-nav ">
-          <a class="nav-item nav-link" href="#">Home </a>
-          <a class="nav-item nav-link" href="#">Academic</a>
-          <a class="nav-item nav-link" href="#">Blog</a>
-          <a class="nav-item nav-link" href="#">Experience</a>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <main role="main">
-    <section class="jumbotron text-center" >
-        <div class="container">
-          <h1 class="font-weight-bolder">I'm Puneet Gupta</h1>
-          <p class=" font-weight-bolder ">Machine learning enthusiast, hardworking and ability of self-learning and strong power of execution.
-            I enjoy meeting new people and finding ways to help them have an uplifting experience. </p>
-          <p class="font-italic font-weight-lighter">"The way to succeed is to double your failure rate."</p>
-          <p>
-            <a href="mailto:punitgupta1811@gmail.com" class="btn btn-success my-2">Email Me</a>
-          </p>
-        </div>
-    </section>
-    <div class="album py-5 bg-light">
+<main role="main">
+    <section class="jumbotron text-center">
       <div class="container">
+        <h1>
+          <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im PuneetGupta.", "I am Creative.", "I Love Design.", "I Love to Develop." ]'>
+            <span class="wrap"></span>
+          </a>
+        </h1>
+        <p class=" font-weight-bolder ">Machine learning enthusiast, hardworking and ability of self-learning and strong power of execution.
+          I enjoy meeting new people and finding ways to help them have an uplifting experience. </p>
+        <p class="font-italic font-weight-lighter">"The way to succeed is to double your failure rate."</p>
+        <p>
+          <a href="mailto:punitgupta1811@gmail.com" class="btn btn-success my-2">Email Me</a>
+        </p>
+      </div>
+    </section>
 
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row pt-1">
+        {% for job in jobs.all %}
+        <div class="col-lg-4 col-sm-6 py-2">
+          <div class="card h-75 text-center" style="width: 18rem;">
+            <div class="embed-responsive embed-responsive-16by9">
+              <img src="{{ job.image.url }}" class="card-img-top embed-responsive-item" alt="The important thing to remember is not to forget">
+            </div>
+            <div class="card-body d-flex flex-column ">
+              <h5 class="card-title">{{ job.title }}</h5>
+              <p class="card-text-center">{{ job.body }}</p>
+              <!-- <a href="{{ job.link }}" class="btn btn-secondary btn-lg btn-block text-truncate mt-auto">Project link</a> -->
               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <div class="row">
+                  <div class=" col-xs-6 mx-3 mb-5">
+                    <a href="{{ job.link }}" class="card-link btn btn-secondary btn-lg btn-block text-truncate mt-auto">Project</a>
                   </div>
-                  <small class="text-muted">9 mins</small>
+                  <div class="col-xs-6 mr-1">
+                    <a href="{{ job.link }}" class="card-link btn btn-primary btn-lg btn-block text-truncate mt-auto">Detail</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        {% endfor %}
+
       </div>
     </div>
+  </div>
+</main>
 
-  </main>
-
-  <footer class="text-muted">
-    <div class="container">
-    </div>
-  </footer>
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-</html>
+{% endblock %}

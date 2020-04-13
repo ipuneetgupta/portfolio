@@ -1,9 +1,9 @@
 {% load static %}
 
-h1.font-weight-bolder{
-  color: blue;
+section.jumbotron{
+  text-align: center;
 }
-body{
+div.box-puneet{
   background-image: url("{% static "image/port_img.jpg" %}");
   background-repeat: no-repeat;
   background-position: center;
